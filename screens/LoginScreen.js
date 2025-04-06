@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
 
   const handleLogin = () => {
     // Here you would normally authenticate the user
-    navigation.navigate("Home");
+    navigation.navigate("DropDown");
   };
 
   return (
