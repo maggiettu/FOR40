@@ -1,70 +1,129 @@
-import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView } from "react-native";
 
 export default function DropDownScreen({ navigation }) {
+  const [selectedItem, setSelectedItem] = useState(null); // Track selected item
+
+  const handleItemPress = (itemName) => {
+    console.log(`${itemName} selected!`);
+    setSelectedItem(itemName); // Update selected item
+    // You can navigate to another screen or perform any action here
+    // Example: navigation.navigate("ItemDetails", { item: itemName });
+  };
+
+  const getItemStyle = (itemName) => {
+    return itemName === selectedItem ? [styles.item, styles.selectedItem] : styles.item;
+  };
+
   return (
     <View style={styles.container}>
+      {/* Scrollable Content */}
+      <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Logo and title */}
         <Image source={require("../assets/icon.png")} style={styles.logo} />
-      <Text style={styles.title}>What are you craving today?</Text>
+        <Text style={styles.title}>What are you craving today?</Text>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Fresh Produce</Text>
-        <View style={styles.item}>
-          <Image source={require("../assets/avocado.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Avocados</Text>
+        {/* Fresh Produce */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Fresh Produce</Text>
+          <TouchableOpacity
+            style={getItemStyle("Avocados")}
+            onPress={() => handleItemPress("Avocados")}
+          >
+            <Image
+              source={require("../assets/avocado.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Avocados</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={getItemStyle("Bananas")}
+            onPress={() => handleItemPress("Bananas")}
+          >
+            <Image
+              source={require("../assets/banana.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Bananas</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.item}>
-          <Image source={require("../assets/banana.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Bananas</Text>
-        </View>
-      </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Protein</Text>
-        <View style={styles.item}>
-          <Image source={require("../assets/eggs.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Eggs</Text>
+        {/* Protein */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Protein</Text>
+          <TouchableOpacity
+            style={getItemStyle("Eggs")}
+            onPress={() => handleItemPress("Eggs")}
+          >
+            <Image
+              source={require("../assets/eggs.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Eggs</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={getItemStyle("Chicken Breast")}
+            onPress={() => handleItemPress("Chicken Breast")}
+          >
+            <Image
+              source={require("../assets/chicken.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Chicken Breast</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.item}>
-          <Image source={require("../assets/chicken.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Chicken Breast</Text>
-        </View>
-      </View>
 
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Dairy</Text>
-        <View style={styles.item}>
-          <Image source={require("../assets/milk.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Milk</Text>
+        {/* Dairy */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Dairy</Text>
+          <TouchableOpacity
+            style={getItemStyle("Milk")}
+            onPress={() => handleItemPress("Milk")}
+          >
+            <Image
+              source={require("../assets/milk.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Milk</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={getItemStyle("Yogurt")}
+            onPress={() => handleItemPress("Yogurt")}
+          >
+            <Image
+              source={require("../assets/yogurt.jpg")}
+              style={styles.itemImage}
+            />
+            <Text style={styles.itemText}>Yogurt</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.item}>
-          <Image source={require("../assets/yogurt.jpg")} style={styles.itemImage} />
-          <Text style={styles.itemText}>Yogurt</Text>
-        </View>
-      </View>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ChooseItemsScreen")}>
-        <Text style={styles.buttonText}>Add Item</Text>
-      </TouchableOpacity>
-
+        {/* Add Item Button */}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("ChooseItemsScreen")}
+        >
+          <Text style={styles.buttonText}>Add Item</Text>
+        </TouchableOpacity>
+      </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigation.navigate("ChooseItemsScreen")}>
-            <Text style={styles.navIcon}>🏠</Text>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("ChooseItemsScreen")}
+        >
+          <Text style={styles.navIcon}>🏠</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("DropDown")}>
-            <Text style={styles.navIcon}>🛒</Text>
+          <Text style={styles.navIcon}>🛒</Text>
         </TouchableOpacity>
 
-        <Text style={styles.navIcon}>💬</Text>
-        <Text style={styles.navIcon}>👥</Text>
-        </View>     
-
+        <TouchableOpacity onPress={() => navigation.navigate("MatchScreen")}>
+          <Text style={styles.navIcon}>💬</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-
   );
 }
 
@@ -73,17 +132,21 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#faf1df",
     padding: 20,
+    position: "relative",
+  },
+  scrollContent: {
+    paddingBottom: 70, 
   },
   title: {
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
-    alignText: "center",
+    textAlign: "center",
   },
   logo: {
     width: 100,
     height: 50,
-    margin: 10, 
+    margin: 10,
     marginBottom: 20,
   },
   section: {
@@ -98,6 +161,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
+    padding: 10,
+    borderRadius: 10,
+    backgroundColor: "#fff", 
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 3 },
+    shadowRadius: 5,
+  },
+  selectedItem: {
+    backgroundColor: "#ffd6d6", 
   },
   itemImage: {
     width: 40,
@@ -127,7 +200,7 @@ const styles = StyleSheet.create({
     borderTopColor: "#ffcccc",
     position: "absolute",
     bottom: 0,
-    width: "100%",
+    width: "118%",
   },
   navIcon: {
     fontSize: 30,

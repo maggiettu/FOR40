@@ -92,8 +92,9 @@ export default function MatchScreen({ navigation }) {
             <Text style={styles.navIcon}>🛒</Text>
         </TouchableOpacity>
 
-        <Text style={styles.navIcon}>💬</Text>
-        <Text style={styles.navIcon}>👥</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("MatchScreen")}>
+            <Text style={styles.navIcon}>💬</Text>
+        </TouchableOpacity>
         </View>     
     </View>
   );

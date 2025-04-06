@@ -10,13 +10,13 @@ import {
 import { Linking } from "react-native";
 
 const handleJoinPress = () => {
-    Linking.openURL("https://www.foodstash.ca/");
-  };
+  Linking.openURL("https://www.foodstash.ca/");
+};
 
-export default function MatchDetailScreen({navigation}) {
+export default function MatchDetailScreen({ navigation }) {
   return (
     <View style={styles.container}>
-        <Image source={require("../assets/icon.png")} style={styles.logo} />
+      <Image source={require("../assets/icon.png")} style={styles.logo} />
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <Text style={styles.checkmark}>✔️</Text>
         <Text style={styles.title}>You have matched with Selina!</Text>
@@ -36,47 +36,50 @@ export default function MatchDetailScreen({navigation}) {
           </View>
         </View>
 
-        {/* Contact Info */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Contact info:</Text>
-          <Text style={styles.handle}>@ubcstudent123</Text>
-          <TouchableOpacity style={styles.instagramButton}>
-            <Text style={styles.buttonText}>Instagram</Text>
-          </TouchableOpacity>
-        </View>
+        {/* Contact Info and Specific Requests */}
+        <View style={styles.dashboard}>
+          {/* Contact Info */}
+          <View style={styles.sectionLeft}>
+            <Text style={styles.sectionTitle}>Contact info:</Text>
+            <Text style={styles.handle}>@ubcstudent123</Text>
+            <TouchableOpacity style={styles.instagramButton}>
+              <Text style={styles.buttonText}>Instagram</Text>
+            </TouchableOpacity>
+          </View>
 
-        {/* Specific Requests */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Specific Requests:</Text>
-          <Text style={styles.requestText}>
-            I prefer green grapes over red grapes, so it would be appreciated if you got those. Thank you!
-          </Text>
+          {/* Specific Requests */}
+          <View style={styles.sectionRight}>
+            <Text style={styles.sectionTitle}>Specific Requests:</Text>
+            <Text style={styles.requestText}>
+              I prefer green grapes over red grapes, so it would be appreciated if you got those. Thank you!
+            </Text>
+          </View>
         </View>
 
         {/* Footer */}
         <View style={styles.footer}>
-          <Text style={styles.title}>THANK YOU FOR USING FOR40!</Text>
+          <Text style={styles.title}>THANK YOU FOR USING SustainABite!</Text>
           <Text style={styles.requestText}>Have food at home that might go bad soon? Contact Food Stash!</Text>
           <TouchableOpacity style={styles.joinButton} onPress={handleJoinPress}>
             <Text style={styles.buttonText}>Join the Cause</Text>
-        </TouchableOpacity>
+          </TouchableOpacity>
         </View>
       </ScrollView>
 
       {/* Bottom Navigation */}
       <View style={styles.navBar}>
         <TouchableOpacity onPress={() => navigation.navigate("ChooseItemsScreen")}>
-            <Text style={styles.navIcon}>🏠</Text>
+          <Text style={styles.navIcon}>🏠</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("DropDown")}>
-            <Text style={styles.navIcon}>🛒</Text>
+          <Text style={styles.navIcon}>🛒</Text>
         </TouchableOpacity>
 
-        <Text style={styles.navIcon}>💬</Text>
-        <Text style={styles.navIcon}>👥</Text>
-        </View>     
-
+        <TouchableOpacity onPress={() => navigation.navigate("MatchScreen")}>
+          <Text style={styles.navIcon}>💬</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -90,7 +93,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 50,
-    margin: 10
+    margin: 10,
   },
   scrollContent: {
     paddingVertical: 40,
@@ -126,6 +129,31 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
   },
+  dashboard: {
+    flexDirection: "row",
+    justifyContent: "space-between", // Space out contact info and requests
+    backgroundColor: "#ffe5e5",
+    padding: 20,
+    borderRadius: 15,
+    marginBottom: 30,
+    width: "100%",
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  sectionLeft: {
+    flex: 1,
+    paddingRight: 10,
+    alignItems: "flex-start", // Align text to the left
+  },
+  sectionRight: {
+    flex: 1,
+    paddingLeft: 10,
+    alignItems: "flex-end", // Align text to the right
+  },
   name: {
     fontWeight: "bold",
     fontSize: 16,
@@ -134,16 +162,11 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 13,
     color: "#333",
-    
-  },
-  section: {
-    marginBottom: 24,
   },
   sectionTitle: {
     fontSize: 15,
     fontWeight: "600",
     marginBottom: 6,
-    
     textAlign: "center",
   },
   handle: {
@@ -157,10 +180,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignItems: "center",
     alignSelf: "center",
-    
   },
   requestText: {
-    fontSize: 13,
+    fontSize: 15,
     color: "#333",
     textAlign: "center",
   },

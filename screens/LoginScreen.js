@@ -19,7 +19,9 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Image source={require("../assets/icon.png")} style={styles.logo} />
+      <View style={styles.logoContainer}>
+        <Image source={require("../assets/icon.png")} style={styles.logo} />
+      </View>
 
       <TextInput
         style={styles.input}
@@ -41,6 +43,11 @@ export default function LoginScreen({ navigation }) {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
+      <Text style={styles.title}>Don't have an account yet?</Text>
+      <TouchableOpacity style={styles.signUpContainer} onPress={handleLogin}>
+        <Text style={styles.signUp}>Sign up</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -50,17 +57,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#faf1df", // Light yellow,
     justifyContent: "center",
+    alignItems: "center", // Centering the content
+    paddingHorizontal: 20,
   },
-
-  logoContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 40,
+  logo: {
+    width: 400, // Set width and height for consistency
+    height: 200,
+    resizeMode: "contain", // Ensure it keeps its aspect ratio
   },
   input: {
-    width: "70%",
+    width: "80%", // Adjust to fill more space
     height: 50,
     backgroundColor: "#fff",
     borderRadius: 10,
@@ -68,23 +74,34 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderWidth: 1,
     borderColor: "#ccc",
-    alignSelf: "center",
   },
   button: {
-    width: "70%",
+    width: "80%", // Keep button width consistent with input
     backgroundColor: "#ff5a5f",
     padding: 16,
     borderRadius: 10,
     alignItems: "center",
     marginTop: 8,
-    alignSelf: "center",
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
   },
-  logo: {
-    alignSelf: "center",
+  title: {
+    textAlign: "center",
+    fontSize: 15,
+    marginTop: 10,
+    paddingHorizontal: 10,
+  },
+  signUpContainer: {
+    marginTop: 10, // Space between "Don't have an account?" and "Sign up"
+    marginBottom: 24, // Adjust bottom margin for proper spacing
+  },
+  signUp: {
+    textAlign: "center",
+    fontSize: 15,
+    textDecorationLine: "underline",
+    marginBottom: 24,
   },
 });
