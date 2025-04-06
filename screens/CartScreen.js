@@ -5,52 +5,52 @@ export default function CartScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My Cart</Text>
-      <Image source={require("../assets/logo.png")} style={styles.logo} />
+      <Image source={require("../assets/icon.png")} style={styles.logo} />
 
       <ScrollView style={styles.scrollContainer}>
         <View style={styles.item}>
           <Text style={styles.itemText}>Yogurt</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/yogurt.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Butter</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/banana.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Cheese String</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/cheese.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Avocados</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/avocado.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Bananas</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/banana.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Lettuce</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/avocado.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Eggs</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/eggs.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Ground Beef</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/chicken.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Pork Belly</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/chicken.jpg")} style={styles.checkmark} />
         </View>
         <View style={styles.item}>
           <Text style={styles.itemText}>Tofu</Text>
-          <Image source={require("../assets/checkmark.png")} style={styles.checkmark} />
+          <Image source={require("../assets/chicken.jpg")} style={styles.checkmark} />
         </View>
       </ScrollView>
 
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Home")}>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("DropDown")}>
         <Text style={styles.buttonText}>Return to home page</Text>
       </TouchableOpacity>
     </View>

@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
-export default function DropDownScreen() {
+
+export default function DropDownScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>What are you craving today?</Text>
@@ -43,16 +44,16 @@ export default function DropDownScreen() {
         </View>
       </View>
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Add to Cart</Text>
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("ChooseItemsScreen")}>
+        <Text style={styles.buttonText}>Add Item</Text>
       </TouchableOpacity>
 
       
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text
                 onPress={() => alert('This is the "Drop Down" screen.')}
                 style={{ fontSize: 26, fontWeight: 'bold' }}>Drop Down Screen</Text>
-        </View>
+        </View> */}
     </View>
 
   );
