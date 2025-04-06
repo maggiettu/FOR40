@@ -5,8 +5,8 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 export default function DropDownScreen({ navigation }) {
   return (
     <View style={styles.container}>
+        <Image source={require("../assets/icon.png")} style={styles.logo} />
       <Text style={styles.title}>What are you craving today?</Text>
-      <Image source={require("../assets/icon.png")} style={styles.logo} />
 
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Fresh Produce</Text>
@@ -48,12 +48,21 @@ export default function DropDownScreen({ navigation }) {
         <Text style={styles.buttonText}>Add Item</Text>
       </TouchableOpacity>
 
-      
-        {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text
-                onPress={() => alert('This is the "Drop Down" screen.')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}>Drop Down Screen</Text>
-        </View> */}
+
+      {/* Bottom Navigation */}
+      <View style={styles.navBar}>
+        <TouchableOpacity onPress={() => navigation.navigate("ChooseItemsScreen")}>
+            <Text style={styles.navIcon}>🏠</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("DropDown")}>
+            <Text style={styles.navIcon}>🛒</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.navIcon}>💬</Text>
+        <Text style={styles.navIcon}>👥</Text>
+        </View>     
+
     </View>
 
   );
@@ -69,9 +78,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 20,
+    alignText: "center",
   },
   logo: {
-    alignSelf: "flex-center",
+    width: 100,
+    height: 50,
+    margin: 10, 
     marginBottom: 20,
   },
   section: {
@@ -100,11 +112,26 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 10,
     alignItems: "center",
-    marginTop: 20,
   },
   buttonText: {
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  navBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingVertical: 10,
+    backgroundColor: "#ffe5e5",
+    borderTopWidth: 1,
+    borderTopColor: "#ffcccc",
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+  },
+  navIcon: {
+    fontSize: 30,
+    color: "#ff5a5f",
+    marginBottom: 20,
   },
 });

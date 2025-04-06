@@ -8,6 +8,8 @@ import CartScreen from "./screens/CartScreen";
 import ChooseItemsScreen from "./screens/ChooseItemsScreen";
 import WaitingForMatchesScreen from "./screens/WaitingForMatchesScreen"; 
 import ShoppingCartConfirmation from "./screens/ShoppingCartConfirmation";
+import MatchScreen from "./screens/MatchScreen";
+import MatchDetailScreen from "./screens/MatchDetailScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +51,16 @@ export default function App() {
           name="ShoppingCartConfirmation"
           component={ShoppingCartConfirmation}
           options={{ headerTitle: "Success!" }}
+        />
+        <Stack.Screen
+          name="MatchScreen"
+          component={MatchScreen}
+          options={{ headerTitle: "Your Matches" }}
+        />
+        <Stack.Screen
+          name="MatchDetailScreen"
+          component={MatchDetailScreen}
+          options={{ headerTitle: "Your Match" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

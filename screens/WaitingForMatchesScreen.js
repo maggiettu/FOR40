@@ -19,6 +19,8 @@ export default function WaitingForMatchesScreen() {
         </TouchableOpacity>
       </View> */}
     </View>
+
+    
   );
 }
 

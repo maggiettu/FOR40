@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-// import { Home, ShoppingCart, MessageSquare, User } from "lucide-react-native"; // use lucide-react-native instead
 
 
 export default function ShoppingCartConfirmation() {
@@ -23,19 +22,26 @@ export default function ShoppingCartConfirmation() {
          style={styles.image}
        />
 
-
-       <TouchableOpacity
-         style={styles.button}
-         onPress={() => navigation.navigate("DropDownScreen")}
-       >
-         <Text style={styles.buttonText}>Continue Shopping</Text>
+       <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("MatchScreen")}>
+         <Text style={styles.buttonText}>See your matches</Text>
        </TouchableOpacity>
 
-
-       <TouchableOpacity style={styles.button}>
-         <Text style={styles.buttonText}>View Cart</Text>
-       </TouchableOpacity>
      </View>
+
+
+     {/* Bottom Navigation */}
+     <View style={styles.navBar}>
+        <TouchableOpacity onPress={() => navigation.navigate("ChooseItemsScreen")}>
+            <Text style={styles.navIcon}>🏠</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigation.navigate("DropDown")}>
+            <Text style={styles.navIcon}>🛒</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.navIcon}>💬</Text>
+        <Text style={styles.navIcon}>👥</Text>
+        </View>     
 
 
    </View>
@@ -47,7 +53,6 @@ const styles = StyleSheet.create({
  container: {
    flex: 1,
    backgroundColor: "#faf1df",
-   justifyContent: "space-between",
  },
  header: {
    flexDirection: "row",
@@ -55,9 +60,10 @@ const styles = StyleSheet.create({
    alignItems: "center",
  },
  logo: {
-   fontSize: 24,
-   color: "red",
-   marginBottom: 0,
+   width: 100,
+   height: 50,
+   margin: 10, 
+   marginBottom: 30,
  },
  brand: {
    fontSize: 24,
@@ -95,5 +101,21 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 18,
     fontWeight: "bold",
+  },
+  navBar: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    paddingVertical: 10,
+    backgroundColor: "#ffe5e5",
+    borderTopWidth: 1,
+    borderTopColor: "#ffcccc",
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
+  },
+  navIcon: {
+    fontSize: 30,
+    color: "#ff5a5f",
+    marginBottom: 20,
   },
 });
